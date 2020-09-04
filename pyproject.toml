@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "dokitchensink"
+version = "0.1.0"
+description = "Thin wrapper for python-digitalocean, mostly to automate DNS record creation after droplet creation"
+authors = ["Aljoscha Vollmerhaus <git@aljoscha.vollmerhaus.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+python-digitalocean = "^1.15.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+dokitchensink-faucet = 'dokitchensink.cli_interface:faucet'
+dokitchensink-drain = 'dokitchensink.cli_interface:drain'
