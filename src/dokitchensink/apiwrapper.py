@@ -55,13 +55,3 @@ class apiwrapper:
             tag = digitalocean.Tag(token=self.do_token, name=tag_name)
             tag.create()
             tag.add_droplets(str(droplet.id))
-
-    # def delete_dns_records(self, name, dns_domain, type):
-    #     do_domain = digitalocean.Domain(token=self.do_token, name=dns_domain)
-    #     existing_records = do_domain.get_records()
-    #     [record.destroy() for record in existing_records if record.name == name and record.type == type]
-
-    # def upsert_dns_record(self, name, dns_domain, type, data, ttl=600):
-    #     self.delete_dns_records(name, dns_domain, type)
-    #     do_domain = digitalocean.Domain(token=self.do_token, name=dns_domain)
-    #     do_domain.create_new_domain_record(name=name, type=type, data=data, ttl=ttl)
