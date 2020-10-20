@@ -85,7 +85,6 @@ def faucet():
     parser.add_argument('--project', dest='do_project_name', metavar='my_do_project', type=str, required=False,
                         default=None, help='DO project name')
 
-
     cliargs = parser.parse_args()
 
     if cliargs.do_project_name:
@@ -135,3 +134,5 @@ def faucet():
         if domain is not None:
             logger.info(f'{cliargs.name}: creating {type} record in domain {domain}, {data}')
             cli_faucet.create_dns_record(name=cliargs.name, dns_domain=domain, type=type, data=data)
+
+    logger.info(f'{cliargs.name}: done, connect to your new droplet: "ssh {cliargs.name}.{cliargs.pub_domain_name}"')
