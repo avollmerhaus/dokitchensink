@@ -61,6 +61,9 @@ def faucet():
     parser.add_argument('--token', metavar='123456', type=str, required=True, help='DO API token')
     parser.add_argument('--name', metavar='my_funky_droplet', type=str, required=True, help='DO droplet name')
 
+    parser.add_argument('--no-monitoring', dest='do_monitoring', action='store_false', required=False, default=True,
+                        help='deactivate DO-agent based droplet monitoring')
+
     parser.add_argument('--pub-domain', dest='pub_domain_name', metavar='infra.example.com', type=str, required=True,
                         help='public-facing domain name for your droplet')
 
@@ -100,6 +103,7 @@ def faucet():
                                         do_region=cliargs.do_region_slug,
                                         do_image_slug=cliargs.do_image_slug,
                                         do_size_slug=cliargs.do_size_slug,
+                                        do_monitoring=cliargs.do_monitoring,
                                         do_ssh_keys=do_ssh_keys)
 
     while not (droplet.ip_address and droplet.ip_v6_address):

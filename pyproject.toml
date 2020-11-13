@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dokitchensink"
-version = "0.1.1"
+version = "0.2.0"
 description = "Thin wrapper for python-digitalocean, mostly to automate DNS record creation after droplet creation"
 authors = ["Aljoscha Vollmerhaus <git@aljoscha.vollmerhaus.net>"]
 homepage = "https://github.com/avollmerhaus/dokitchensink"

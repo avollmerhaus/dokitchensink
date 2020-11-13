@@ -32,7 +32,7 @@ class apiwrapper:
         do_domain = digitalocean.Domain(token=self.do_token, name=dns_domain)
         do_domain.create_new_domain_record(name=name, type=type, data=data, ttl=ttl)
 
-    def create_droplet(self, name, do_region, do_image_slug, do_size_slug, do_ssh_keys):
+    def create_droplet(self, name, do_region, do_image_slug, do_size_slug, do_ssh_keys, do_monitoring):
         # FIXME: what if a droplet already exists? rebuild it? ask the user about that?
         droplet = digitalocean.Droplet(token=self.do_token,
                                        name=name,
@@ -42,8 +42,8 @@ class apiwrapper:
                                        backups=False,
                                        ipv6=True,
                                        private_networking=True,
-                                       monitoring=True,
-                                       ssh_keys=do_ssh_keys
+                                       ssh_keys=do_ssh_keys,
+                                       monitoring=do_monitoring
                                        )
         droplet.create()
         return droplet
